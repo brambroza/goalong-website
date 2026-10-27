@@ -11,7 +11,7 @@ type Row = {
 
 const rows: Row[] = [
   {
-    label: "ซอฟต์แวร์ตามสั่ง",
+    label: "ซอฟต์แวร์เฉพาะธุรกิจคุณ",
     detail: "ERP, ระบบคลัง, ระบบซ่อมบำรุง",
     status: "รับงาน",
     href: "/services/software-development",

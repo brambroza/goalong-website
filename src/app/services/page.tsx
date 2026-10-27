@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageHeader
         crumbs={[{ href: "/services", label: "บริการ" }]}
         title="บริการของ GO Along"
-        lead="ตั้งแต่เขียนโปรแกรมตามสั่งไปจนถึงเครือข่ายและเซิร์ฟเวอร์ที่โปรแกรมนั้นทำงานอยู่ เลือกบริการเดียวหรือให้เราดูแลทั้งหมดก็ได้"
+        lead="ตั้งแต่ซอฟต์แวร์ที่ออกแบบเฉพาะธุรกิจของคุณไปจนถึงเครือข่ายและเซิร์ฟเวอร์ที่โปรแกรมนั้นทำงานอยู่ เลือกบริการเดียวหรือให้เราดูแลทั้งหมดก็ได้"
       />
       <Container className="py-14">
         <ul className="divide-y divide-rule border-y border-rule">
