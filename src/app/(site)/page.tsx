@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AndonBoard } from "@/components/AndonBoard";
-import { HeroMotion } from "@/components/motion/HeroMotion";
+import { TechHero } from "@/components/hero/TechHero";
+import { DataFlow } from "@/components/motion/DataFlow";
 import { Reveal } from "@/components/motion/Reveal";
 import { FactoryLine } from "@/components/illustrations/FactoryLine";
 import { InfraStack } from "@/components/illustrations/InfraStack";
@@ -48,45 +48,7 @@ export default async function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="border-b border-rule">
-        <HeroMotion>
-          <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-            <div>
-              <p data-hero-item className="text-[0.95rem] text-steel">
-                {site.legalNameTh} สมุทรปราการ
-              </p>
-              <h1
-                data-hero-item
-                className="mt-4 text-[2.15rem] font-semibold leading-[1.3] tracking-tight sm:text-[3rem] sm:leading-[1.22]"
-              >
-                รับเขียนโปรแกรมและดูแลระบบไอที ให้ธุรกิจและโรงงานไทย ครบในทีมเดียว
-              </h1>
-              <p data-hero-item className="measure mt-6 text-[1.125rem] leading-8 text-steel">
-                เราพัฒนาซอฟต์แวร์ตามขั้นตอนงานจริงของคุณ และดูแลทั้ง Network,
-                Firewall และ Server ที่ระบบนั้นใช้งานอยู่ เมื่อมีปัญหาจึงคุยกับทีมเดียวจบ
-              </p>
-              <div data-hero-item className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/contact"
-                  className="rounded-md bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep"
-                >
-                  ปรึกษาโปรเจกต์ฟรี
-                </Link>
-                <Link
-                  href="/services"
-                  className="rounded-md border border-ink px-6 py-3 font-medium hover:bg-ink hover:text-white"
-                >
-                  ดูบริการทั้งหมด
-                </Link>
-              </div>
-            </div>
-            <div data-hero-board>
-              <AndonBoard />
-            </div>
-          </Container>
-        </HeroMotion>
-      </section>
+      <TechHero />
 
       {/* Services: software + infra side by side */}
       <Reveal as="section">
@@ -152,6 +114,8 @@ export default async function Home() {
           </div>
         </Container>
       </Reveal>
+
+      <DataFlow />
 
       {/* Factory systems */}
       <Reveal as="section" className="border-y border-rule bg-panel">

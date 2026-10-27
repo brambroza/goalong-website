@@ -96,17 +96,9 @@ body {
   vertical-align: top;
 }
 
-/* Andon lamps: lit by default; GSAP (HeroMotion) switches them on in sequence */
-.andon-lamp {
-  background: var(--lamp, #3ecf8e);
-  box-shadow: 0 0 10px var(--lamp, #3ecf8e);
-}
-
 /* Hide hero pieces until GSAP plays the entrance (only when JS runs and motion is allowed) */
 @media (prefers-reduced-motion: no-preference) {
-  .js [data-hero-item],
-  .js [data-hero-board],
-  .js [data-hero-status] {
+  .js [data-hero] {
     visibility: hidden;
   }
 }

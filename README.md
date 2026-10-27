@@ -73,7 +73,8 @@ Deploy บน Vercel: import repo นี้ แล้วใส่ Environment Va
 
 ## Animation (GSAP)
 
-- `src/components/motion/HeroMotion.tsx` — หน้าแรก: ข้อความเลื่อนเข้า แล้วไฟบอร์ด andon ติดทีละดวง
+- `src/components/hero/` — hero หน้าแรก: โครงข่ายจุดบน canvas ที่ตอบสนองเมาส์ (`NetworkCanvas`), แผง terminal ที่พิมพ์คำสั่งสร้างระบบแล้วแผนผังประกอบขึ้นเอง (`SystemDeck`), หัวข้อแยกคำเลื่อนเข้า ตัวเลขนับขึ้น และแถบ tech stack เลื่อน (`TechHero`)
+- `src/components/motion/DataFlow.tsx` — ส่วน "ข้อมูลเข้าครั้งเดียว": ตรึงหน้าจอแล้วเส้นข้อมูลวาดตามการเลื่อน (เฉพาะจอใหญ่)
 - `src/components/motion/Reveal.tsx` — เนื้อหาค่อย ๆ ปรากฏเมื่อเลื่อนถึง, เส้นขั้นตอนการทำงานวาดตามการเลื่อน
 - `src/components/illustrations/` — ภาพ SVG เคลื่อนไหว (สายพานโรงงาน, ระบบ → Firewall → Server) เล่นเฉพาะตอนอยู่บนจอ
 - ผู้ใช้ที่ตั้งค่า "ลดการเคลื่อนไหว" ในเครื่องจะเห็นหน้าแบบนิ่ง
