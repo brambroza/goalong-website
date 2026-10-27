@@ -12,12 +12,6 @@ const stats = [
   { value: 24, suffix: "/7", label: "ช่องทาง Teams สำหรับลูกค้าสัญญาดูแล" },
 ];
 
-const stack = [
-  "Next.js", "React", "TypeScript", ".NET", "Node.js", "Flutter", "React Native",
-  "PostgreSQL", "SQL Server", "Supabase", "Docker", "LINE Messaging API",
-  "FortiGate", "Cisco", "Dell PowerEdge", "HPE ProLiant", "AI-assisted engineering",
-];
-
 // Thai has no spaces between words, so break points are marked by "|"; " " keeps a real space.
 const headline = "รับเขียนโปรแกรม|ด้วยเทคโนโลยี|เดียวกับ|บริษัทเทค|ระดับโลก ให้ธุรกิจ|และโรงงานไทย";
 const words = headline.split("|").flatMap((chunk) => {
@@ -71,13 +65,6 @@ export function TechHero() {
             "-=0.4",
           );
         });
-
-        // Tech stack marquee
-        const track = q<HTMLElement>(".hero-marquee")[0];
-        if (track) {
-          const half = track.scrollWidth / 2;
-          gsap.to(track, { x: -half, duration: 38, ease: "none", repeat: -1 });
-        }
 
         // Parallax glow follows the pointer
         const glow = q(".hero-glow")[0];
@@ -162,16 +149,6 @@ export function TechHero() {
         </dl>
       </div>
 
-      <div className="relative border-t border-[#2d3f37] py-3 [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
-        <div className="hero-marquee flex w-max gap-10 whitespace-nowrap px-5 font-mono text-[0.8rem] text-[#8fa59a]">
-          {[...stack, ...stack].map((s, i) => (
-            <span key={i} className="inline-flex items-center gap-10">
-              {s}
-              <span aria-hidden="true" className="inline-block size-1 rounded-full bg-[#3a4a43]" />
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
