@@ -4,7 +4,7 @@ import { TechHero } from "@/components/hero/TechHero";
 import { DataFlow } from "@/components/motion/DataFlow";
 import { Reveal } from "@/components/motion/Reveal";
 import { FactoryLine } from "@/components/illustrations/FactoryLine";
-import { InfraStack } from "@/components/illustrations/InfraStack";
+import { ProductShot } from "@/components/ProductShot";
 import { formatThaiDate, getAllPosts } from "@/lib/blog";
 import { ContactBand, Container, FaqList, PostCover } from "@/components/ui";
 import { services } from "@/lib/services";
@@ -53,7 +53,7 @@ export default async function Home() {
       {/* Services: software + infra side by side */}
       <Reveal as="section">
         <Container className="py-16 sm:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.3fr]">
             <div data-reveal>
               <h2 className="max-w-2xl text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
                 ทั้งโปรแกรม และเครื่องที่โปรแกรมทำงานอยู่
@@ -61,8 +61,18 @@ export default async function Home() {
               <p className="measure mt-3 text-steel">
                 ระบบช้าอาจมาจากโค้ด ฐานข้อมูล หรือเครือข่าย ทีมเดียวที่เห็นทั้งหมดหาสาเหตุได้เร็วกว่า
               </p>
+              <p className="measure mt-3 text-steel">
+                ตัวอย่างจากระบบ GO HR ที่เราพัฒนา: หน้า Insight สรุปกำลังคน ต้นทุน และสัญญาณการลาออก
+                ให้ผู้บริหารเห็นในหน้าเดียว ทำงานอยู่บนเซิร์ฟเวอร์และเครือข่ายที่ทีมเราดูแลเอง
+              </p>
             </div>
-            <InfraStack className="mx-auto w-full max-w-[440px]" />
+            <ProductShot
+              src="/images/go-hr-insight.webp"
+              alt="หน้า Insight วิเคราะห์ข้อมูลของระบบ GO HR แสดงจำนวนพนักงาน อัตราลาออก และกราฟสรุปตามหน่วยงาน"
+              width={1707}
+              height={1231}
+              caption="GO HR — ระบบบริหารงานบุคคลที่ GO Along พัฒนา"
+            />
           </div>
 
           <div className="mt-12 grid gap-10 md:grid-cols-2">
