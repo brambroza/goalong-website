@@ -3,6 +3,7 @@ import { products } from "@/lib/products";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { factorySystems } from "@/lib/solutions";
+import { portfolio } from "@/lib/portfolio";
 
 export const revalidate = 300;
 
@@ -26,8 +27,9 @@ export async function GET() {
     ...factorySystems.map((f) => `- ${f.name} (${f.nameEn}): ${f.does.join("; ")}`),
     `- Details: ${site.url}/solutions/factory`,
     "",
-    "## Products",
-    ...products.map((p) => `- [${p.name}](${p.url}): ${p.kind}. ${p.summary}`),
+    "## Products and live systems",
+    ...portfolio.map((p) => `- [${p.name}](${p.url}): ${p.kind}. ${p.tagline}. ${p.summary}`),
+    ...products.filter((p) => !portfolio.some((x) => x.url === p.url)).map((p) => `- [${p.name}](${p.url}): ${p.kind}. ${p.summary}`),
     "",
     "## Articles",
     ...posts.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),

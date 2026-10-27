@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ContactBand, Container, PageHeader } from "@/components/ui";
 import { products } from "@/lib/products";
+import { Showcase } from "@/components/portfolio/Showcase";
 
 export const metadata: Metadata = {
-  title: "ผลิตภัณฑ์: QueueBooking ระบบจองคิว LINE และ AI Production Partner",
+  title: "ผลงานและผลิตภัณฑ์: StatusDesk, Factory OS, QueueBooking, AI Production Partner",
   description:
-    "ผลิตภัณฑ์ของ GO Along: QueueBooking ระบบจองคิวผ่าน LINE OA สำหรับร้านและศูนย์บริการ และ AI Production Partner บริการพาแอปที่สร้างด้วย AI ขึ้นใช้งานจริงอย่างปลอดภัย",
+    "ผลงานและผลิตภัณฑ์ของ GO Along: StatusDesk AI agent ตอบสถานะงานโรงงานบน LINE, Factory OS ERP โมดูลาร์, QueueBooking ระบบจองคิวผ่าน LINE OA และ AI Production Partner บริการพาแอปที่สร้างด้วย AI ขึ้นใช้งานจริง",
   alternates: { canonical: "/products" },
 };
 
@@ -14,9 +15,10 @@ export default function ProductsPage() {
     <>
       <PageHeader
         crumbs={[{ href: "/products", label: "ผลิตภัณฑ์" }]}
-        title="ผลิตภัณฑ์ของ GO Along"
+        title="ผลงานและผลิตภัณฑ์ของ GO Along"
         lead="ระบบและบริการที่เราพัฒนาเอง เปิดให้ใช้ได้ทันทีโดยไม่ต้องเริ่มโปรเจกต์ใหม่"
       />
+      <Showcase />
       <Container className="space-y-16 py-14">
         {products.map((p) => (
           <section

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TechHero } from "@/components/hero/TechHero";
 import { DataFlow } from "@/components/motion/DataFlow";
+import { Showcase } from "@/components/portfolio/Showcase";
 import { Reveal } from "@/components/motion/Reveal";
 import { FactoryLine } from "@/components/illustrations/FactoryLine";
 import { ProductShot } from "@/components/ProductShot";
@@ -9,7 +10,6 @@ import { formatThaiDate, getAllPosts } from "@/lib/blog";
 import { ContactBand, Container, FaqList, PostCover } from "@/components/ui";
 import { services } from "@/lib/services";
 import { factorySystems } from "@/lib/solutions";
-import { products } from "@/lib/products";
 import { workflowSteps } from "@/lib/process";
 import { site } from "@/lib/site";
 
@@ -159,33 +159,7 @@ export default async function Home() {
         </Container>
       </Reveal>
 
-      {/* Products */}
-      <Reveal as="section">
-        <Container className="py-16 sm:py-20">
-          <h2 data-reveal className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
-            ผลิตภัณฑ์ของเรา
-          </h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {products.map((p) => (
-              <article
-                key={p.id}
-                data-reveal
-                className="flex flex-col rounded-lg border border-rule bg-panel p-6"
-              >
-                <h3 className="text-[1.3rem] font-semibold">{p.name}</h3>
-                <p className="mt-1 text-[0.95rem] text-andon-deep">{p.kind}</p>
-                <p className="mt-3 flex-1 text-steel">{p.summary}</p>
-                <a
-                  href={p.url}
-                  className="mt-5 self-start font-medium underline underline-offset-4 hover:text-andon-deep"
-                >
-                  {p.cta}
-                </a>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </Reveal>
+      <Showcase />
 
       {/* Process: the top rule draws across as the section scrolls in */}
       <Reveal as="section" className="border-y border-rule bg-panel">

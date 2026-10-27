@@ -31,7 +31,7 @@ export const site = {
 export const nav = [
   { href: "/services", label: "บริการ" },
   { href: "/solutions/factory", label: "ระบบโรงงาน" },
-  { href: "/products", label: "ผลิตภัณฑ์" },
+  { href: "/products", label: "ผลงาน" },
   { href: "/network-service", label: "Network & MA" },
   { href: "/blog", label: "บทความ" },
   { href: "/why-us", label: "ทำไมต้องเรา" },
