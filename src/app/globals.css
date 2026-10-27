@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/*
+  GO Along palette — taken from the factory floor:
+  paper (cool work-order white), ink (green-black), andon green (line running),
+  signal amber (attention), steel (secondary text), rule (hairlines).
+*/
+@theme {
+  --color-paper: #f6f7f4;
+  --color-panel: #ffffff;
+  --color-ink: #17221e;
+  --color-steel: #56645f;
+  --color-rule: #d8ddd8;
+  --color-andon: #1d7f54;
+  --color-andon-deep: #13583a;
+  --color-andon-soft: #e3f1e9;
+  --color-amber: #e3a018;
+  --color-board: #1b2a24;
+  --color-board-line: #2d3f37;
+
+  --font-sans: "IBM Plex Sans Thai", "Noto Sans Thai", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  font-feature-settings: "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-andon);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.measure {
+  max-width: 68ch;
+}
+
+/* Long-form article / markdown body */
+.prose-ga h2 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin: 2.5rem 0 0.75rem;
+}
+.prose-ga h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+}
+.prose-ga p {
+  margin: 0 0 1.1rem;
+}
+.prose-ga ul,
+.prose-ga ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.4rem;
+}
+.prose-ga ul {
+  list-style: disc;
+}
+.prose-ga ol {
+  list-style: decimal;
+}
+.prose-ga li {
+  margin: 0.3rem 0;
+}
+.prose-ga a {
+  color: var(--color-andon-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-ga strong {
+  font-weight: 600;
+}
+.prose-ga table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+.prose-ga th,
+.prose-ga td {
+  border-bottom: 1px solid var(--color-rule);
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Andon board: the one orchestrated moment — lamps switch on in sequence */
+@keyframes lamp-on {
+  0% {
+    background: #3a4a43;
+    box-shadow: none;
+  }
+  100% {
+    background: var(--lamp, #3ecf8e);
+    box-shadow: 0 0 10px var(--lamp, #3ecf8e);
+  }
+}
+@keyframes row-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.andon-row {
+  animation: row-in 0.4s ease-out both;
+  animation-delay: calc(var(--i) * 180ms + 250ms);
+}
+.andon-lamp {
+  background: var(--lamp, #3ecf8e);
+  box-shadow: 0 0 10px var(--lamp, #3ecf8e);
+  animation: lamp-on 0.35s ease-out both;
+  animation-delay: calc(var(--i) * 180ms + 350ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .andon-row,
+  .andon-lamp {
+    animation: none;
+  }
+}
