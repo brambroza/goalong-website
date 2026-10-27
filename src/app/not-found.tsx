@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Container } from "@/components/ui";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export default function NotFound() {
   return (
+    <>
+      <Header />
+      <main id="main" className="flex-1">
     <Container className="py-24">
       <h1 className="text-[2rem] font-semibold">ไม่พบหน้านี้</h1>
       <p className="mt-3 text-steel">
@@ -20,5 +25,8 @@ export default function NotFound() {
         </li>
       </ul>
     </Container>
+      </main>
+      <Footer />
+    </>
   );
 }

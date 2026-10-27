@@ -154,15 +154,49 @@ export function ContactBand({
             >
               โทร {site.phone}
             </a>
-            <a
-              href={`mailto:${site.email}`}
+            <Link
+              href="/contact"
               className="text-center text-[0.95rem] text-steel underline underline-offset-4 hover:text-ink"
             >
-              หรืออีเมล {site.email}
-            </a>
+              หรือกรอกฟอร์มติดต่อ
+            </Link>
           </div>
         </div>
       </Container>
     </section>
+  );
+}
+
+/** Article cover: the uploaded image, or a branded placeholder when none is set. */
+export function PostCover({
+  src,
+  alt,
+  className = "",
+}: {
+  src?: string | null;
+  alt: string;
+  className?: string;
+}) {
+  if (src) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className={`aspect-[16/9] w-full rounded-lg border border-rule bg-panel object-cover ${className}`}
+      />
+    );
+  }
+  return (
+    <div
+      aria-hidden="true"
+      className={`flex aspect-[16/9] w-full items-center justify-center rounded-lg border border-rule bg-board ${className}`}
+    >
+      <svg viewBox="0 0 990 672" className="w-1/4 opacity-90">
+        <polygon points="2,325 332,2 444,115 234,326 458,558 343,670" fill="#40bd5f" />
+        <polygon points="988,325 658,2 546,115 756,326 532,558 647,670" fill="#40bd5f" />
+      </svg>
+    </div>
   );
 }

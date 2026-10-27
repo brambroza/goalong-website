@@ -4,10 +4,11 @@ import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { factorySystems } from "@/lib/solutions";
 
-export const dynamic = "force-static";
+export const revalidate = 300;
 
 /** llms.txt — a plain summary for AI assistants (https://llmstxt.org). */
-export function GET() {
+export async function GET() {
+  const posts = await getAllPosts();
   const lines = [
     `# ${site.legalNameEn} (${site.legalNameTh})`,
     "",
@@ -29,7 +30,7 @@ export function GET() {
     ...products.map((p) => `- [${p.name}](${p.url}): ${p.kind}. ${p.summary}`),
     "",
     "## Articles",
-    ...getAllPosts().map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
+    ...posts.map((p) => `- [${p.title}](${site.url}/blog/${p.slug}): ${p.description}`),
     "",
     "## Company",
     `- [Why GO Along](${site.url}/why-us)`,

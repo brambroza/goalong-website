@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AndonBoard } from "@/components/AndonBoard";
-import { ContactBand, Container, FaqList } from "@/components/ui";
+import { HeroMotion } from "@/components/motion/HeroMotion";
+import { Reveal } from "@/components/motion/Reveal";
+import { FactoryLine } from "@/components/illustrations/FactoryLine";
+import { InfraStack } from "@/components/illustrations/InfraStack";
+import { formatThaiDate, getAllPosts } from "@/lib/blog";
+import { ContactBand, Container, FaqList, PostCover } from "@/components/ui";
 import { services } from "@/lib/services";
 import { factorySystems } from "@/lib/solutions";
 import { products } from "@/lib/products";
 import { workflowSteps } from "@/lib/process";
 import { site } from "@/lib/site";
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: { absolute: "รับเขียนโปรแกรม รับพัฒนาซอฟต์แวร์ครบวงจร | GO Along" },
@@ -33,63 +40,77 @@ const homeFaqs = [
   },
 ];
 
-export default function Home() {
+
+export default async function Home() {
   const software = services.filter((s) => s.group === "software");
   const infra = services.filter((s) => s.group === "infra");
+  const latestPosts = (await getAllPosts()).slice(0, 3);
 
   return (
     <>
       {/* Hero */}
       <section className="border-b border-rule">
-        <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div>
-            <p className="text-[0.95rem] text-steel">
-              {site.legalNameTh} สมุทรปราการ
-            </p>
-            <h1 className="mt-4 text-[2.15rem] font-semibold leading-[1.3] tracking-tight sm:text-[3rem] sm:leading-[1.22]">
-              รับเขียนโปรแกรมและดูแลระบบไอที ให้ธุรกิจและโรงงานไทย ครบในทีมเดียว
-            </h1>
-            <p className="measure mt-6 text-[1.125rem] leading-8 text-steel">
-              เราพัฒนาซอฟต์แวร์ตามขั้นตอนงานจริงของคุณ และดูแลทั้ง Network,
-              Firewall และ Server ที่ระบบนั้นใช้งานอยู่ เมื่อมีปัญหาจึงคุยกับทีมเดียวจบ
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/contact"
-                className="rounded-md bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep"
+        <HeroMotion>
+          <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+            <div>
+              <p data-hero-item className="text-[0.95rem] text-steel">
+                {site.legalNameTh} สมุทรปราการ
+              </p>
+              <h1
+                data-hero-item
+                className="mt-4 text-[2.15rem] font-semibold leading-[1.3] tracking-tight sm:text-[3rem] sm:leading-[1.22]"
               >
-                ปรึกษาโปรเจกต์ฟรี
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-md border border-ink px-6 py-3 font-medium hover:bg-ink hover:text-white"
-              >
-                ดูบริการทั้งหมด
-              </Link>
+                รับเขียนโปรแกรมและดูแลระบบไอที ให้ธุรกิจและโรงงานไทย ครบในทีมเดียว
+              </h1>
+              <p data-hero-item className="measure mt-6 text-[1.125rem] leading-8 text-steel">
+                เราพัฒนาซอฟต์แวร์ตามขั้นตอนงานจริงของคุณ และดูแลทั้ง Network,
+                Firewall และ Server ที่ระบบนั้นใช้งานอยู่ เมื่อมีปัญหาจึงคุยกับทีมเดียวจบ
+              </p>
+              <div data-hero-item className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="rounded-md bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep"
+                >
+                  ปรึกษาโปรเจกต์ฟรี
+                </Link>
+                <Link
+                  href="/services"
+                  className="rounded-md border border-ink px-6 py-3 font-medium hover:bg-ink hover:text-white"
+                >
+                  ดูบริการทั้งหมด
+                </Link>
+              </div>
             </div>
-          </div>
-          <AndonBoard />
-        </Container>
+            <div data-hero-board>
+              <AndonBoard />
+            </div>
+          </Container>
+        </HeroMotion>
       </section>
 
       {/* Services: software + infra side by side */}
-      <section>
+      <Reveal as="section">
         <Container className="py-16 sm:py-20">
-          <h2 className="max-w-2xl text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
-            ทั้งโปรแกรม และเครื่องที่โปรแกรมทำงานอยู่
-          </h2>
-          <p className="measure mt-3 text-steel">
-            ระบบช้าอาจมาจากโค้ด ฐานข้อมูล หรือเครือข่าย ทีมเดียวที่เห็นทั้งหมดหาสาเหตุได้เร็วกว่า
-          </p>
+          <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
+            <div data-reveal>
+              <h2 className="max-w-2xl text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
+                ทั้งโปรแกรม และเครื่องที่โปรแกรมทำงานอยู่
+              </h2>
+              <p className="measure mt-3 text-steel">
+                ระบบช้าอาจมาจากโค้ด ฐานข้อมูล หรือเครือข่าย ทีมเดียวที่เห็นทั้งหมดหาสาเหตุได้เร็วกว่า
+              </p>
+            </div>
+            <InfraStack className="mx-auto w-full max-w-[440px]" />
+          </div>
 
-          <div className="mt-10 grid gap-10 md:grid-cols-2">
-            <div>
+          <div className="mt-12 grid gap-10 md:grid-cols-2">
+            <div data-reveal>
               <h3 className="border-b-2 border-andon pb-2 font-semibold">ซอฟต์แวร์</h3>
               <ul className="divide-y divide-rule">
                 {software.map((s) => (
                   <li key={s.slug}>
                     <Link href={`/services/${s.slug}`} className="group block py-5">
-                      <span className="font-medium group-hover:text-andon-deep group-hover:underline underline-offset-4">
+                      <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
                         {s.name}
                       </span>
                       <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
@@ -100,13 +121,13 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div data-reveal>
               <h3 className="border-b-2 border-amber pb-2 font-semibold">โครงสร้างไอที</h3>
               <ul className="divide-y divide-rule">
                 {infra.map((s) => (
                   <li key={s.slug}>
                     <Link href={`/services/${s.slug}`} className="group block py-5">
-                      <span className="font-medium group-hover:text-andon-deep group-hover:underline underline-offset-4">
+                      <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
                         {s.name}
                       </span>
                       <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
@@ -117,7 +138,7 @@ export default function Home() {
                 ))}
                 <li>
                   <Link href="/network-service" className="group block py-5">
-                    <span className="font-medium group-hover:text-andon-deep group-hover:underline underline-offset-4">
+                    <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
                       ต่ออายุ MA FortiGate และ Cisco, IT Support, PM
                     </span>
                     <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
@@ -130,13 +151,13 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </Reveal>
 
       {/* Factory systems */}
-      <section className="border-y border-rule bg-panel">
+      <Reveal as="section" className="border-y border-rule bg-panel">
         <Container className="py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
-            <div>
+          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
+            <div data-reveal>
               <h2 className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
                 ระบบสำหรับโรงงาน SME ไทย
               </h2>
@@ -151,28 +172,30 @@ export default function Home() {
                 ดูระบบโรงงานทั้งหมด
               </Link>
             </div>
-            <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              {factorySystems.map((f) => (
-                <div key={f.id} className="border-t border-rule pt-4">
-                  <dt className="font-medium">{f.name}</dt>
-                  <dd className="mt-1 text-[0.95rem] leading-7 text-steel">{f.problem}</dd>
-                </div>
-              ))}
-            </dl>
+            <FactoryLine className="w-full" />
           </div>
+          <dl className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            {factorySystems.map((f) => (
+              <div key={f.id} data-reveal className="border-t border-rule pt-4">
+                <dt className="font-medium">{f.name}</dt>
+                <dd className="mt-1 text-[0.95rem] leading-7 text-steel">{f.problem}</dd>
+              </div>
+            ))}
+          </dl>
         </Container>
-      </section>
+      </Reveal>
 
       {/* Products */}
-      <section>
+      <Reveal as="section">
         <Container className="py-16 sm:py-20">
-          <h2 className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
+          <h2 data-reveal className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
             ผลิตภัณฑ์ของเรา
           </h2>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {products.map((p) => (
               <article
                 key={p.id}
+                data-reveal
                 className="flex flex-col rounded-lg border border-rule bg-panel p-6"
               >
                 <h3 className="text-[1.3rem] font-semibold">{p.name}</h3>
@@ -188,30 +211,71 @@ export default function Home() {
             ))}
           </div>
         </Container>
-      </section>
+      </Reveal>
 
-      {/* Process */}
-      <section className="border-y border-rule bg-panel">
+      {/* Process: the top rule draws across as the section scrolls in */}
+      <Reveal as="section" className="border-y border-rule bg-panel">
         <Container className="py-16 sm:py-20">
-          <h2 className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
+          <h2 data-reveal className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
             ขั้นตอนการทำงาน
           </h2>
-          <ol className="mt-10 grid gap-8 md:grid-cols-5">
-            {workflowSteps.map((step, i) => (
-              <li key={step.title} className="relative border-t-2 border-ink pt-4">
-                <span className="text-[0.9rem] font-medium tabular-nums text-andon-deep">
-                  ขั้นที่ {i + 1}
-                </span>
-                <h3 className="mt-1 font-semibold leading-snug">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem] leading-7 text-steel">{step.detail}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="relative mt-10">
+            <div
+              data-reveal-line
+              aria-hidden="true"
+              className="absolute left-0 right-0 top-0 hidden h-[2px] bg-ink md:block"
+            />
+            <ol className="grid gap-8 md:grid-cols-5">
+              {workflowSteps.map((step, i) => (
+                <li key={step.title} data-reveal className="border-t-2 border-ink pt-4 md:border-t-0">
+                  <span className="text-[0.9rem] font-medium tabular-nums text-andon-deep">
+                    ขั้นที่ {i + 1}
+                  </span>
+                  <h3 className="mt-1 font-semibold leading-snug">{step.title}</h3>
+                  <p className="mt-2 text-[0.95rem] leading-7 text-steel">{step.detail}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Container>
-      </section>
+      </Reveal>
+
+      {/* Latest articles */}
+      {latestPosts.length > 0 && (
+        <Reveal as="section">
+          <Container className="py-16 sm:py-20">
+            <div data-reveal className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
+                บทความล่าสุด
+              </h2>
+              <Link href="/blog" className="font-medium text-andon-deep underline underline-offset-4">
+                ดูบทความทั้งหมด
+              </Link>
+            </div>
+            <ul className="mt-8 grid gap-8 md:grid-cols-3">
+              {latestPosts.map((p) => (
+                <li key={p.slug} data-reveal>
+                  <Link href={`/blog/${p.slug}`} className="group block">
+                    <PostCover src={p.coverImage} alt={p.title} />
+                    <time dateTime={p.date} className="mt-4 block text-[0.9rem] text-steel">
+                      {formatThaiDate(p.date)}
+                    </time>
+                    <h3 className="mt-1 font-semibold leading-snug group-hover:text-andon-deep">
+                      {p.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-3 text-[0.95rem] leading-7 text-steel">
+                      {p.description}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Reveal>
+      )}
 
       {/* FAQ */}
-      <section>
+      <section className={latestPosts.length > 0 ? "border-t border-rule" : ""}>
         <Container className="py-16 sm:py-20">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
             <h2 className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">

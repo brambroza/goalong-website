@@ -3,7 +3,10 @@ import { getAllPosts } from "@/lib/blog";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 300;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts();
   const staticPaths: { path: string; priority: number }[] = [
     { path: "", priority: 1 },
     { path: "/services", priority: 0.9 },
@@ -29,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
-    ...getAllPosts().map((p) => ({
+    ...posts.map((p) => ({
       url: `${site.url}/blog/${p.slug}`,
       lastModified: p.updated ?? p.date,
       changeFrequency: "yearly" as const,

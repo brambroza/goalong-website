@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 // AI crawlers are allowed on purpose: being cited by AI answers (GEO) is a goal.
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: "*", allow: "/" }],
+    rules: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api/"] }],
     sitemap: `${site.url}/sitemap.xml`,
     host: site.url,
   };

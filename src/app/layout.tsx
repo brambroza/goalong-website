@@ -6,8 +6,6 @@ import "@fontsource/ibm-plex-sans-thai/latin-400.css";
 import "@fontsource/ibm-plex-sans-thai/latin-500.css";
 import "@fontsource/ibm-plex-sans-thai/latin-600.css";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/ui";
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
@@ -100,19 +98,18 @@ const organization = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="th">
+    <html lang="th" suppressHydrationWarning>
+      <head>
+        {/* Marks JS as available so the hero can wait for its GSAP entrance; falls back after 3s. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.remove('js')},3000);",
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-panel focus:px-3 focus:py-2"
-        >
-          ข้ามไปยังเนื้อหา
-        </a>
-        <Header />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
         <JsonLd data={organization} />
       </body>
     </html>

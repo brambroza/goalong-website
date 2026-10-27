@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Breadcrumbs, ContactBand, Container, JsonLd } from "@/components/ui";
+import { Breadcrumbs, ContactBand, Container, JsonLd, PostCover } from "@/components/ui";
 import { formatThaiDate, getAllPosts, getPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
-export const dynamicParams = false;
+export const revalidate = 300;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return getAllPosts().map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  return (await getAllPosts()).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -26,13 +27,14 @@ export async function generateMetadata({
       description: post.description,
       publishedTime: post.date,
       modifiedTime: post.updated ?? post.date,
+      ...(post.coverImage ? { images: [post.coverImage] } : {}),
     },
   };
 }
 
 export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) notFound();
 
   return (
@@ -56,6 +58,9 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           </Container>
         </header>
         <Container className="py-12">
+          {post.coverImage && (
+            <PostCover src={post.coverImage} alt={post.title} className="measure mb-10" />
+          )}
           <div
             className="prose-ga measure"
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -71,6 +76,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           description: post.description,
           datePublished: post.date,
           dateModified: post.updated ?? post.date,
+          ...(post.coverImage ? { image: post.coverImage } : {}),
           inLanguage: "th",
           mainEntityOfPage: `${site.url}/blog/${post.slug}`,
           author: { "@id": `${site.url}/#organization` },

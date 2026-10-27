@@ -62,7 +62,7 @@ export function AndonBoard() {
     >
       <div className="flex items-center justify-between border-b border-board-line pb-3 text-[0.85rem] text-[#8fa59a]">
         <span>บอร์ดบริการ GO Along</span>
-        <span className="flex items-center gap-1.5">
+        <span data-hero-status className="flex items-center gap-1.5">
           <span className="inline-block size-2 rounded-full bg-[#3ecf8e]" aria-hidden="true" />
           พร้อมให้บริการ
         </span>

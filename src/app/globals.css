@@ -96,42 +96,23 @@ body {
   vertical-align: top;
 }
 
-/* Andon board: the one orchestrated moment — lamps switch on in sequence */
-@keyframes lamp-on {
-  0% {
-    background: #3a4a43;
-    box-shadow: none;
-  }
-  100% {
-    background: var(--lamp, #3ecf8e);
-    box-shadow: 0 0 10px var(--lamp, #3ecf8e);
-  }
-}
-@keyframes row-in {
-  from {
-    opacity: 0.35;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.andon-row {
-  animation: row-in 0.4s ease-out both;
-  animation-delay: calc(var(--i) * 180ms + 250ms);
-}
+/* Andon lamps: lit by default; GSAP (HeroMotion) switches them on in sequence */
 .andon-lamp {
   background: var(--lamp, #3ecf8e);
   box-shadow: 0 0 10px var(--lamp, #3ecf8e);
-  animation: lamp-on 0.35s ease-out both;
-  animation-delay: calc(var(--i) * 180ms + 350ms);
+}
+
+/* Hide hero pieces until GSAP plays the entrance (only when JS runs and motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-hero-item],
+  .js [data-hero-board],
+  .js [data-hero-status] {
+    visibility: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .andon-row,
-  .andon-lamp {
-    animation: none;
   }
 }
