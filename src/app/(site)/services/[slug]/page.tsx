@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ContactBand, Container, FaqList, JsonLd, PageHeader } from "@/components/ui";
+import { ContactBand, Container, FaqList, JsonLd, PageHeader, SiteImage, hasPublicFile } from "@/components/ui";
 import { getService, services } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -42,6 +42,16 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         title={s.name}
         lead={s.intro}
       >
+        {hasPublicFile(s.image) && (
+          <SiteImage
+            src={s.image}
+            alt={`${s.name} โดย GO Along`}
+            width={1500}
+            height={1000}
+            priority
+            className="mt-8 w-full max-w-xl rounded-lg border border-rule bg-panel"
+          />
+        )}
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/contact"

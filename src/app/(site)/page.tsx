@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { FactoryLine } from "@/components/illustrations/FactoryLine";
 import { ProductShot } from "@/components/ProductShot";
 import { formatThaiDate, getAllPosts } from "@/lib/blog";
-import { ContactBand, Container, FaqList, PostCover } from "@/components/ui";
+import { ContactBand, Container, FaqList, PostCover, SiteImage, hasPublicFile } from "@/components/ui";
 import { services } from "@/lib/services";
 import { factorySystems } from "@/lib/solutions";
 import { workflowSteps } from "@/lib/process";
@@ -81,12 +81,17 @@ export default async function Home() {
               <ul className="divide-y divide-rule">
                 {software.map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/services/${s.slug}`} className="group block py-5">
-                      <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
-                        {s.name}
-                      </span>
-                      <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
-                        {s.summary}
+                    <Link href={`/services/${s.slug}`} className="group flex gap-4 py-5">
+                      {hasPublicFile(s.image) && (
+                        <SiteImage src={s.image} alt="" width={300} height={200} sizes="96px" className="h-16 w-24 shrink-0 rounded-md border border-rule object-cover" />
+                      )}
+                      <span>
+                        <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
+                          {s.name}
+                        </span>
+                        <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
+                          {s.summary}
+                        </span>
                       </span>
                     </Link>
                   </li>
@@ -98,12 +103,17 @@ export default async function Home() {
               <ul className="divide-y divide-rule">
                 {infra.map((s) => (
                   <li key={s.slug}>
-                    <Link href={`/services/${s.slug}`} className="group block py-5">
-                      <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
-                        {s.name}
-                      </span>
-                      <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
-                        {s.summary}
+                    <Link href={`/services/${s.slug}`} className="group flex gap-4 py-5">
+                      {hasPublicFile(s.image) && (
+                        <SiteImage src={s.image} alt="" width={300} height={200} sizes="96px" className="h-16 w-24 shrink-0 rounded-md border border-rule object-cover" />
+                      )}
+                      <span>
+                        <span className="font-medium underline-offset-4 group-hover:text-andon-deep group-hover:underline">
+                          {s.name}
+                        </span>
+                        <span className="mt-1 block text-[0.97rem] leading-7 text-steel">
+                          {s.summary}
+                        </span>
                       </span>
                     </Link>
                   </li>
@@ -164,9 +174,12 @@ export default async function Home() {
       {/* Process: the top rule draws across as the section scrolls in */}
       <Reveal as="section" className="border-y border-rule bg-panel">
         <Container className="py-16 sm:py-20">
-          <h2 data-reveal className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
-            ขั้นตอนการทำงาน
-          </h2>
+          <div className="grid items-center gap-8 lg:grid-cols-[1fr_auto]">
+            <h2 data-reveal className="text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
+              ขั้นตอนการทำงาน
+            </h2>
+            <SiteImage src="/images/process.png" alt="ขั้นตอนการทำงานของ GO Along" width={600} height={400} sizes="320px" className="w-full max-w-xs rounded-lg border border-rule bg-panel" />
+          </div>
           <div className="relative mt-10">
             <div
               data-reveal-line

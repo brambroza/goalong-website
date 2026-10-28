@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContactBand, Container, PageHeader } from "@/components/ui";
+import { ContactBand, Container, PageHeader, SiteImage, hasPublicFile } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "IT Support, Network Service, MA และ PM สำหรับสำนักงานและโรงงาน",
@@ -9,9 +9,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/network-service" },
 };
 
+const heroImage = "/images/network/network-service.png";
+const brandsImage = "/images/network/it-hardware.svg";
+
 const groups = [
   {
     title: "System Infrastructure",
+    icon: "/images/network/system-infrastructure.svg",
     items: [
       "ออกแบบและดูแลระบบ Network, Security, Server, Storage และซอฟต์แวร์",
       "ระบบไฟฟ้าและความเย็นสำหรับห้องเซิร์ฟเวอร์",
@@ -19,6 +23,7 @@ const groups = [
   },
   {
     title: "IT Support",
+    icon: "/images/network/it-service.svg",
     items: [
       "ดูแลแบบ Remote และ Onsite",
       "Monitor ระบบเครือข่าย",
@@ -28,6 +33,7 @@ const groups = [
   },
   {
     title: "Network Security",
+    icon: "/images/network/network-security.svg",
     items: [
       "Firewall และ VPN",
       "Antivirus / Anti-malware",
@@ -37,10 +43,12 @@ const groups = [
   },
   {
     title: "Structured Cabling",
+    icon: "/images/network/structured-cabling.svg",
     items: ["เดินสาย LAN และ Fiber Optic", "สายสำหรับคอมพิวเตอร์และกล้อง CCTV"],
   },
   {
     title: "Network Service",
+    icon: "/images/network/network-service.svg",
     items: [
       "ติดตั้งและดูแล Router, Switch, Firewall",
       "ออกแบบ VLAN แยกเครือข่ายตามการใช้งาน",
@@ -49,6 +57,7 @@ const groups = [
   },
   {
     title: "Preventive Maintenance (PM)",
+    icon: "/images/network/pm.svg",
     items: [
       "ตรวจเช็ก Server ระบบไฟ และอุปกรณ์เครือข่ายตามรอบ",
       "ทำความสะอาด อัปเดตซอฟต์แวร์และแอนตี้ไวรัส",
@@ -88,9 +97,23 @@ export default function NetworkServicePage() {
       </PageHeader>
 
       <Container className="py-14">
+        {hasPublicFile(heroImage) && (
+          <SiteImage
+            src={heroImage}
+            alt="บริการ Network และ IT Support โดย GO Along"
+            width={1500}
+            height={700}
+            sizes="(min-width: 1024px) 1100px, 100vw"
+            priority
+            className="mb-14 w-full rounded-lg border border-rule bg-panel"
+          />
+        )}
         <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((g) => (
             <section key={g.title} className="border-t-2 border-ink pt-4">
+              {hasPublicFile(g.icon) && (
+                <SiteImage src={g.icon} alt="" width={96} height={96} sizes="56px" className="mb-3 size-14" />
+              )}
               <h2 className="font-semibold">{g.title}</h2>
               <ul className="mt-2 space-y-1.5 text-steel">
                 {g.items.map((i) => (
@@ -103,6 +126,9 @@ export default function NetworkServicePage() {
 
         <section className="mt-16">
           <h2 className="text-[1.5rem] font-semibold">อุปกรณ์ที่จำหน่ายและติดตั้ง</h2>
+          {hasPublicFile(brandsImage) && (
+            <SiteImage src={brandsImage} alt="อุปกรณ์ Server, Network, Wireless ที่ GO Along จำหน่าย" width={1500} height={1000} sizes="(min-width: 1024px) 1100px, 100vw" className="mt-6 w-full rounded-lg border border-rule bg-panel" />
+          )}
           <dl className="mt-4 divide-y divide-rule border-y border-rule">
             {brands.map((b) => (
               <div key={b.group} className="grid gap-1 py-3 sm:grid-cols-[200px_1fr]">

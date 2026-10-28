@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import fs from "node:fs";
+import path from "node:path";
 import type { ReactNode } from "react";
 import { site } from "@/lib/site";
 import type { Faq } from "@/lib/services";
@@ -198,5 +201,36 @@ export function PostCover({
         <polygon points="988,325 658,2 546,115 756,326 532,558 647,670" fill="#40bd5f" />
       </svg>
     </div>
+  );
+}
+
+
+/** True when a /public asset exists — lets pages reference original-site images before they are uploaded. */
+export function hasPublicFile(publicPath?: string | null): publicPath is string {
+  if (!publicPath) return false;
+  return fs.existsSync(path.join(process.cwd(), "public", publicPath));
+}
+
+/** Image from /public, rendered only when the file is present. */
+export function SiteImage({
+  src,
+  alt,
+  width,
+  height,
+  className = "",
+  sizes = "(min-width: 1024px) 480px, 100vw",
+  priority = false,
+}: {
+  src?: string | null;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}) {
+  if (!hasPublicFile(src)) return null;
+  return (
+    <Image src={src} alt={alt} width={width} height={height} sizes={sizes} priority={priority} className={className} />
   );
 }

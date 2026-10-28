@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ContactBand, Container, PageHeader } from "@/components/ui";
+import { ContactBand, Container, PageHeader, SiteImage, hasPublicFile } from "@/components/ui";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -24,8 +24,18 @@ export default function ServicesPage() {
             <li key={s.slug}>
               <Link
                 href={`/services/${s.slug}`}
-                className="group grid gap-2 py-7 md:grid-cols-[1fr_1.4fr] md:gap-10"
+                className={`group grid gap-4 py-7 md:gap-10 ${hasPublicFile(s.image) ? "md:grid-cols-[220px_1fr_1.4fr]" : "md:grid-cols-[1fr_1.4fr]"}`}
               >
+                {hasPublicFile(s.image) && (
+                  <SiteImage
+                    src={s.image}
+                    alt=""
+                    width={600}
+                    height={400}
+                    sizes="220px"
+                    className="w-full max-w-[220px] rounded-md border border-rule bg-panel"
+                  />
+                )}
                 <span>
                   <span className="block text-[1.2rem] font-semibold group-hover:text-andon-deep">
                     {s.name}

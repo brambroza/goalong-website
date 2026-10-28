@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactBand, Container, FaqList, PageHeader } from "@/components/ui";
+import { ContactBand, Container, FaqList, PageHeader, SiteImage } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -34,7 +34,9 @@ export default function MaFortigatePage() {
         ]}
         title="ต่ออายุ MA FortiGate"
         lead="ต่อ MA FortiGate ทุกรุ่นที่ยังไม่ EOL ให้ Firewall ได้รับอัปเดตการป้องกันภัยล่าสุด และได้รับการเปลี่ยนเครื่องเมื่อฮาร์ดแวร์เสีย"
-      />
+      >
+        <SiteImage src="/images/network/ma-fortigate.png" alt="ต่ออายุ MA FortiGate โดย GO Along" width={1500} height={700} sizes="(min-width: 1024px) 760px, 100vw" priority className="mt-8 w-full max-w-3xl rounded-lg border border-rule bg-panel" />
+      </PageHeader>
       <Container className="grid gap-14 py-14 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <h2 className="text-[1.5rem] font-semibold">รูปแบบการต่ออายุ</h2>

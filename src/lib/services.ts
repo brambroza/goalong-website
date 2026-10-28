@@ -15,11 +15,14 @@ export type Service = {
   tech?: string[];
   faqs: Faq[];
   group: "software" | "infra";
+  /** Illustration from the original site, placed in public/images/services/ */
+  image?: string;
 };
 
 export const services: Service[] = [
   {
     slug: "software-development",
+    image: "/images/services/software-development.png",
     group: "software",
     name: "รับเขียนโปรแกรม พัฒนาซอฟต์แวร์เฉพาะธุรกิจของคุณ",
     nameEn: "Software development",
@@ -61,6 +64,7 @@ export const services: Service[] = [
   },
   {
     slug: "web-application",
+    image: "/images/services/web-application.png",
     group: "software",
     name: "พัฒนาเว็บแอปพลิเคชัน",
     nameEn: "Web application development",
@@ -96,6 +100,7 @@ export const services: Service[] = [
   },
   {
     slug: "mobile-app",
+    image: "/images/services/mobile-app.png",
     group: "software",
     name: "พัฒนาแอปพลิเคชันมือถือ",
     nameEn: "Mobile application development",
@@ -126,6 +131,7 @@ export const services: Service[] = [
   },
   {
     slug: "ux-ui-design",
+    image: "/images/services/ux-ui-design.png",
     group: "software",
     name: "ออกแบบ UX/UI",
     nameEn: "UX/UI design",
@@ -155,6 +161,7 @@ export const services: Service[] = [
   },
   {
     slug: "network-security",
+    image: "/images/services/network-security.png",
     group: "infra",
     name: "ติดตั้งระบบเครือข่ายและความปลอดภัย",
     nameEn: "Network & security infrastructure",
@@ -185,6 +192,7 @@ export const services: Service[] = [
   },
   {
     slug: "server-cloud-backup",
+    image: "/images/services/server-cloud-backup.png",
     group: "infra",
     name: "Server, Cloud และระบบสำรองข้อมูล",
     nameEn: "Server, cloud & backup",
