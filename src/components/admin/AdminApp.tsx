@@ -147,7 +147,7 @@ function Tab({ active, onClick, children }: { active: boolean; onClick: () => vo
 
 function Notice({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="max-w-xl rounded-lg border border-rule bg-panel p-6">
+    <div className="max-w-xl rounded-[22px] bg-tile p-6">
       <h1 className="text-[1.25rem] font-semibold">{title}</h1>
       <p className="mt-2 text-steel">{children}</p>
     </div>
@@ -171,7 +171,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={submit} className="mx-auto mt-10 max-w-sm rounded-lg border border-rule bg-panel p-6">
+    <form onSubmit={submit} className="mx-auto mt-10 max-w-sm rounded-[22px] bg-tile p-6">
       <h1 className="text-[1.35rem] font-semibold">เข้าสู่ระบบผู้ดูแล</h1>
       <label className="mt-5 block text-[0.95rem] font-medium" htmlFor="email">
         อีเมล

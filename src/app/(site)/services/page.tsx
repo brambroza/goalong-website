@@ -33,7 +33,7 @@ export default function ServicesPage() {
                     width={600}
                     height={400}
                     sizes="220px"
-                    className="w-full max-w-[220px] rounded-md border border-rule bg-panel"
+                    className="w-full max-w-[220px] rounded-xl bg-tile"
                   />
                 )}
                 <span>

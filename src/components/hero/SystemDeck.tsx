@@ -158,9 +158,9 @@ export function SystemDeck({ className = "" }: { className?: string }) {
         </span>
       </div>
 
-      <div className="grid">
+      <div className="grid md:grid-cols-[1fr_1.1fr]">
         {/* terminal */}
-        <ol className="min-h-[196px] space-y-1 border-b border-[#2d3f37] px-4 py-3 font-mono text-[0.78rem] leading-5 text-[#c9d6cf]">
+        <ol className="min-h-[196px] space-y-1 border-b border-[#2d3f37] px-4 py-3 text-left font-mono text-[0.78rem] leading-5 text-[#c9d6cf] md:border-b-0 md:border-r">
           {script.map((l, i) => (
             <li key={i} data-i={i} className="sd-line flex gap-2">
               {l.kind === "cmd" ? (

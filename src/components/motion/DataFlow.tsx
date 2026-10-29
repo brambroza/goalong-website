@@ -83,13 +83,10 @@ export function DataFlow() {
   );
 
   return (
-    <section id="dataflow" ref={root} className="border-y border-rule bg-panel">
-      <div className="mx-auto grid lg:min-h-[calc(100vh-68px)] max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:py-0">
+    <section id="dataflow" ref={root} className="bg-paper">
+      <div className="mx-auto grid lg:min-h-[calc(100vh-68px)] max-w-[1024px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:py-0">
         <div>
-          <p className="text-[0.95rem] text-andon-deep">ตัวอย่างการไหลของข้อมูล</p>
-          <h2 className="mt-2 text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
-            ข้อมูลเข้าครั้งเดียว ไหลถึงทุกคนที่ต้องใช้
-          </h2>
+          <h2 className="display display-md">ข้อมูลเข้าครั้งเดียว ไหลถึงทุกคนที่ต้องใช้</h2>
           <ol className="mt-8 space-y-6">
             {steps.map((s, i) => (
               <li key={s.title} data-i={i} className="df-step border-l-2 border-andon pl-4">

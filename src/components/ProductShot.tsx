@@ -58,8 +58,8 @@ export function ProductShot({
         aria-hidden="true"
         className="ps-glow pointer-events-none absolute -inset-6 rounded-[28px] bg-[radial-gradient(60%_60%_at_50%_40%,rgba(64,189,95,0.28),rgba(64,189,95,0)_70%)]"
       />
-      <div className="ps-frame relative overflow-hidden rounded-xl border border-rule bg-panel shadow-[0_30px_60px_-24px_rgba(23,34,30,0.45)] will-change-transform">
-        <div className="flex items-center gap-1.5 border-b border-rule bg-paper px-3 py-2">
+      <div className="ps-frame relative overflow-hidden rounded-[22px] bg-panel shadow-[0_30px_60px_-24px_rgba(0,0,0,0.35)] ring-1 ring-black/5 will-change-transform">
+        <div className="flex items-center gap-1.5 border-b border-black/5 bg-tile px-3 py-2">
           <span className="size-2.5 rounded-full bg-rule" />
           <span className="size-2.5 rounded-full bg-rule" />
           <span className="size-2.5 rounded-full bg-rule" />
@@ -67,7 +67,7 @@ export function ProductShot({
             hr.goalong.co.th
           </span>
         </div>
-        <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 600px, 100vw" className="block h-auto w-full" />
+        <Image src={src} alt={alt} width={width} height={height} sizes="(min-width: 1024px) 900px, 100vw" className="block h-auto w-full" />
       </div>
       {caption && <figcaption className="mt-3 text-center text-[0.9rem] text-steel">{caption}</figcaption>}
     </figure>

@@ -44,7 +44,7 @@ export default function MaCiscoPage() {
         title="ต่ออายุ MA Cisco และ Smart Net Total Care"
         lead="GO Along เป็น Cisco Partner ต่อ MA ให้อุปกรณ์ Cisco ทุกรุ่นที่ยังไม่ EOS ได้โดยตรง"
       >
-        <SiteImage src="/images/network/ma-cisco.svg" alt="ต่ออายุ MA Cisco SmartNet โดย GO Along" width={1500} height={700} sizes="(min-width: 1024px) 760px, 100vw" priority className="mt-8 w-full max-w-3xl rounded-lg border border-rule bg-panel" />
+        <SiteImage src="/images/network/ma-cisco.svg" alt="ต่ออายุ MA Cisco SmartNet โดย GO Along" width={1500} height={700} sizes="(min-width: 1024px) 760px, 100vw" priority className="mx-auto mt-8 w-full max-w-3xl rounded-[22px] bg-tile" />
       </PageHeader>
       <Container className="grid gap-14 py-14 lg:grid-cols-[1.4fr_1fr]">
         <div>
@@ -62,7 +62,7 @@ export default function MaCiscoPage() {
             <FaqList faqs={faqs} />
           </div>
         </div>
-        <aside className="self-start rounded-lg border border-rule bg-panel p-6">
+        <aside className="self-start rounded-[22px] bg-tile p-6">
           <h2 className="font-semibold">ขอใบเสนอราคา</h2>
           <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-steel">
             <li>ชื่อบริษัทและที่อยู่</li>
@@ -71,7 +71,7 @@ export default function MaCiscoPage() {
           </ol>
           <a
             href={`mailto:${site.email}?subject=${encodeURIComponent("ขอใบเสนอราคา MA Cisco")}`}
-            className="mt-5 block rounded-md bg-andon px-5 py-3 text-center font-medium text-white hover:bg-andon-deep"
+            className="mt-5 block rounded-full bg-andon px-5 py-3 text-center font-medium text-white hover:bg-andon-deep"
           >
             ส่งอีเมลขอใบเสนอราคา
           </a>

@@ -23,7 +23,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${className}`}>{children}</div>
+    <div className={`mx-auto max-w-[1024px] px-4 sm:px-6 ${className}`}>{children}</div>
   );
 }
 
@@ -33,7 +33,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   const all = [{ href: "/", label: "หน้าแรก" }, ...items];
   return (
     <>
-      <nav aria-label="breadcrumb" className="text-[0.9rem] text-steel">
+      <nav aria-label="breadcrumb" className="text-[0.85rem] text-steel">
         <ol className="flex flex-wrap gap-x-2">
           {all.map((c, i) => (
             <li key={c.href} className="flex gap-x-2">
@@ -79,15 +79,13 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-rule bg-panel">
-      <Container className="py-12 sm:py-16">
-        <Breadcrumbs items={crumbs} />
-        <h1 className="mt-5 max-w-3xl text-[2rem] font-semibold leading-[1.3] tracking-tight sm:text-[2.6rem]">
-          {title}
-        </h1>
-        {lead && (
-          <p className="measure mt-4 text-[1.125rem] leading-8 text-steel">{lead}</p>
-        )}
+    <section className="bg-paper">
+      <Container className="py-14 text-center sm:py-20">
+        <div className="flex justify-center">
+          <Breadcrumbs items={crumbs} />
+        </div>
+        <h1 className="display display-md mx-auto mt-5 max-w-3xl">{title}</h1>
+        {lead && <p className="subhead mx-auto mt-4 max-w-2xl text-steel">{lead}</p>}
         {children}
       </Container>
     </section>
@@ -128,7 +126,7 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
   );
 }
 
-/** Closing call-to-action used at the bottom of most pages. */
+/** Closing call-to-action: black tile, centered. */
 export function ContactBand({
   title = "เล่าปัญหาให้เราฟัง แล้วเราจะบอกว่าควรเริ่มจากตรงไหน",
   note = "ปรึกษาเบื้องต้นไม่มีค่าใช้จ่าย ทีมงานจะติดต่อกลับเพื่อนัดคุยรายละเอียด",
@@ -137,35 +135,22 @@ export function ContactBand({
   note?: string;
 }) {
   return (
-    <section className="mt-20">
-      <Container>
-        <div className="grid gap-8 rounded-lg border border-rule bg-panel p-6 sm:p-10 md:grid-cols-[1.3fr_1fr] md:items-center">
-          <div>
-            <h2 className="text-[1.6rem] font-semibold leading-snug">{title}</h2>
-            <p className="mt-3 text-steel">{note}</p>
-          </div>
-          <div className="flex flex-col gap-3">
-            <a
-              href={site.lineHref}
-              className="rounded-md bg-andon px-5 py-3 text-center font-medium text-white hover:bg-andon-deep"
-            >
+    <section className="mt-20 bg-paper">
+      <div className="mx-auto max-w-[1200px] px-3">
+        <div className="rounded-[28px] bg-board px-6 py-16 text-center text-white sm:py-24">
+          <h2 className="display display-md mx-auto max-w-3xl">{title}</h2>
+          <p className="subhead mx-auto mt-4 max-w-xl text-white/60">{note}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a href={site.lineHref} className="rounded-full bg-brand px-6 py-3 font-medium text-board hover:bg-[#5fd47b]">
               แชทผ่าน LINE {site.line}
             </a>
-            <a
-              href={site.phoneHref}
-              className="rounded-md border border-ink px-5 py-3 text-center font-medium hover:bg-ink hover:text-white"
-            >
+            <a href={site.phoneHref} className="rounded-full border border-white/25 px-6 py-3 font-medium text-white hover:bg-white/10">
               โทร {site.phone}
             </a>
-            <Link
-              href="/contact"
-              className="text-center text-[0.95rem] text-steel underline underline-offset-4 hover:text-ink"
-            >
-              หรือกรอกฟอร์มติดต่อ
-            </Link>
           </div>
+          <Link href="/contact" className="link-more mt-6 text-brand">หรือกรอกฟอร์มติดต่อ</Link>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
@@ -187,14 +172,14 @@ export function PostCover({
         src={src}
         alt={alt}
         loading="lazy"
-        className={`aspect-[16/9] w-full rounded-lg border border-rule bg-panel object-cover ${className}`}
+        className={`aspect-[16/9] w-full rounded-2xl bg-tile object-cover ${className}`}
       />
     );
   }
   return (
     <div
       aria-hidden="true"
-      className={`flex aspect-[16/9] w-full items-center justify-center rounded-lg border border-rule bg-board ${className}`}
+      className={`flex aspect-[16/9] w-full items-center justify-center rounded-2xl bg-board ${className}`}
     >
       <svg viewBox="0 0 990 672" className="w-1/4 opacity-90">
         <polygon points="2,325 332,2 444,115 234,326 458,558 343,670" fill="#40bd5f" />

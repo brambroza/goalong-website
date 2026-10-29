@@ -49,19 +49,19 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
             width={1500}
             height={1000}
             priority
-            className="mt-8 w-full max-w-xl rounded-lg border border-rule bg-panel"
+            className="mx-auto mt-8 w-full max-w-xl rounded-[22px] bg-tile"
           />
         )}
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/contact"
-            className="rounded-md bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep"
+            className="rounded-full bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep"
           >
             ปรึกษางานนี้
           </Link>
           <a
             href={site.phoneHref}
-            className="rounded-md border border-ink px-6 py-3 font-medium hover:bg-ink hover:text-white"
+            className="rounded-full border border-ink/30 px-6 py-3 font-medium hover:bg-ink hover:text-white"
           >
             โทร {site.phone}
           </a>
@@ -104,7 +104,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 {s.tech.map((t) => (
                   <li
                     key={t}
-                    className="rounded border border-rule bg-panel px-2.5 py-1 text-[0.9rem]"
+                    className="rounded bg-tile px-2.5 py-1 text-[0.9rem]"
                   >
                     {t}
                   </li>

@@ -32,7 +32,7 @@ export default function ProductsPage() {
               <p className="mt-4 text-steel">{p.summary}</p>
               <a
                 href={p.url}
-                className="mt-6 inline-block rounded-md bg-andon px-5 py-3 font-medium text-white hover:bg-andon-deep"
+                className="mt-6 inline-block rounded-full bg-andon px-5 py-3 font-medium text-white hover:bg-andon-deep"
               >
                 {p.cta}
               </a>

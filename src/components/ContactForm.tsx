@@ -76,7 +76,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
         ref={doneRef}
         tabIndex={-1}
         role="status"
-        className="rounded-lg border border-andon bg-andon-soft p-6 outline-none"
+        className="rounded-[22px] bg-andon-soft p-6 outline-none"
       >
         <h2 className="text-[1.3rem] font-semibold text-andon-deep">ส่งข้อความแล้ว</h2>
         <p className="mt-2">
@@ -98,7 +98,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
   }
 
   return (
-    <form onSubmit={submit} noValidate className="relative rounded-lg border border-rule bg-panel p-5 sm:p-7">
+    <form onSubmit={submit} noValidate className="relative rounded-[22px] bg-tile p-5 sm:p-7">
       <h2 className="text-[1.3rem] font-semibold">ส่งข้อความถึงทีมงาน</h2>
       <p className="mt-1 text-[0.95rem] text-steel">ช่องที่มี * ต้องกรอก</p>
 
@@ -116,7 +116,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
         id="cf-topic"
         value={values.topic}
         onChange={(e) => update("topic", e.target.value)}
-        className="mt-1 w-full rounded-md border border-rule bg-paper px-3 py-2.5"
+        className="mt-1 w-full rounded-xl border border-rule bg-panel px-3 py-2.5"
       >
         <option value="">เลือกเรื่อง</option>
         {contactTopics.map((t) => (
@@ -136,7 +136,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
         onChange={(e) => update("message", e.target.value)}
         aria-invalid={Boolean(errors.message)}
         aria-describedby={errors.message ? "cf-message-err" : "cf-message-hint"}
-        className={`mt-1 w-full rounded-md border bg-paper px-3 py-2.5 ${errors.message ? "border-[#b3402c]" : "border-rule"}`}
+        className={`mt-1 w-full rounded-xl border bg-panel px-3 py-2.5 ${errors.message ? "border-[#b3402c]" : "border-rule"}`}
         placeholder="เช่น อยากทำระบบติดตามออเดอร์สำหรับโรงงาน 50 คน ตอนนี้ใช้ Excel อยู่"
       />
       {errors.message ? (
@@ -168,7 +168,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-5 w-full rounded-md bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep disabled:opacity-60 sm:w-auto"
+        className="mt-5 w-full rounded-full bg-andon px-6 py-3 font-medium text-white hover:bg-andon-deep disabled:opacity-60 sm:w-auto"
       >
         {status === "sending" ? "กำลังส่ง…" : "ส่งข้อความ"}
       </button>
@@ -210,7 +210,7 @@ function Input({
         onChange={(e) => onChange(id, e.target.value)}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `cf-${id}-err` : undefined}
-        className={`mt-1 w-full rounded-md border bg-paper px-3 py-2.5 ${error ? "border-[#b3402c]" : "border-rule"}`}
+        className={`mt-1 w-full rounded-xl border bg-panel px-3 py-2.5 ${error ? "border-[#b3402c]" : "border-rule"}`}
       />
       {error && (
         <p id={`cf-${id}-err`} className="mt-1 text-[0.9rem] text-[#b3402c]">

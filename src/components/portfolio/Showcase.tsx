@@ -99,14 +99,11 @@ export function Showcase() {
   );
 
   return (
-    <section ref={root} id="portfolio" className="border-y border-rule bg-panel">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <div className="max-w-2xl">
-          <p className="text-[0.95rem] text-andon-deep">ผลงานและผลิตภัณฑ์</p>
-          <h2 className="mt-2 text-[1.75rem] font-semibold leading-snug sm:text-[2.1rem]">
-            ระบบที่เราสร้างและเปิดใช้งานอยู่จริง
-          </h2>
-          <p className="mt-3 text-steel">
+    <section ref={root} id="portfolio" className="bg-tile">
+      <div className="mx-auto max-w-[1024px] px-4 py-16 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="display display-md">ระบบที่เราสร้าง และใช้งานจริง</h2>
+          <p className="subhead mt-3 text-steel">
             ตั้งแต่ AI agent บน LINE ไปจนถึง ERP เต็มระบบ ทุกตัวออกแบบสำหรับธุรกิจไทย
             และดูแลต่อโดยทีมเดียวกับที่พัฒนา
           </p>
@@ -115,7 +112,7 @@ export function Showcase() {
         {/* Desktop: pinned screen + scrolling list. Mobile: stacked. */}
         <div className="mt-12 lg:grid lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           <div className="sc-pin hidden lg:block">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-rule bg-board shadow-[0_30px_60px_-24px_rgba(23,34,30,0.5)]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[22px] bg-board shadow-[0_30px_60px_-24px_rgba(0,0,0,0.45)]">
               {portfolio.map((p) => (
                 <div key={p.id} data-id={p.id} className="sc-screen absolute inset-0">
                   {p.image ? (
@@ -137,7 +134,7 @@ export function Showcase() {
             {portfolio.map((p, i) => (
               <li key={p.id} className="sc-item lg:flex lg:min-h-[70vh] lg:flex-col lg:justify-center">
                 {/* mobile screen */}
-                <div className="mb-5 overflow-hidden rounded-xl border border-rule bg-board lg:hidden">
+                <div className="mb-5 overflow-hidden rounded-[22px] bg-board lg:hidden">
                   <div data-id={p.id} className="sc-screen relative aspect-[16/10]">
                     {p.image ? (
                       <Image src={p.image} alt={`หน้าจอ ${p.name}`} fill sizes="100vw" className="object-cover object-top" />
@@ -165,7 +162,7 @@ export function Showcase() {
                   href={p.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4 inline-block font-medium text-andon-deep underline underline-offset-4 hover:text-ink"
+                  className="link-more mt-4"
                 >
                   เปิดดู {p.name}
                 </a>

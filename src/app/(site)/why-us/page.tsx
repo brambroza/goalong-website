@@ -40,7 +40,7 @@ export default function WhyUsPage() {
         lead="ไปด้วยกัน ไปได้ไกล เราอยากเป็นทีมไอทีที่ธุรกิจของคุณเรียกใช้ได้ทุกครั้งที่ต้องการ ไม่ใช่แค่คนที่ส่งงานแล้วหายไป"
       />
       <Container className="py-14">
-        <SiteImage src="/images/why-us.png" alt="ทำไมต้องเลือก GO Along" width={1030} height={773} sizes="(min-width: 1024px) 900px, 100vw" priority className="mb-12 w-full max-w-3xl rounded-lg border border-rule bg-panel" />
+        <SiteImage src="/images/why-us.png" alt="ทำไมต้องเลือก GO Along" width={1030} height={773} sizes="(min-width: 1024px) 900px, 100vw" priority className="mb-12 w-full max-w-3xl rounded-[22px] bg-tile" />
         <dl className="divide-y divide-rule border-y border-rule">
           {reasons.map((r) => (
             <div key={r.t} className="grid gap-2 py-7 md:grid-cols-[1fr_1.6fr] md:gap-10">

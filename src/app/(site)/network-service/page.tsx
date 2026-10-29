@@ -80,16 +80,16 @@ export default function NetworkServicePage() {
         title="IT Support และ Network Service สำหรับสำนักงานและโรงงาน"
         lead="ดูแลโครงสร้างไอทีที่ระบบงานของคุณใช้อยู่ ตั้งแต่สาย LAN, Firewall ไปจนถึงเซิร์ฟเวอร์ พร้อมต่ออายุ MA อุปกรณ์และตรวจเช็กตามรอบ"
       >
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/ma-fortigate"
-            className="rounded-md bg-andon px-5 py-3 font-medium text-white hover:bg-andon-deep"
+            className="rounded-full bg-andon px-5 py-3 font-medium text-white hover:bg-andon-deep"
           >
             ต่ออายุ MA FortiGate
           </Link>
           <Link
             href="/ma-cisco"
-            className="rounded-md border border-ink px-5 py-3 font-medium hover:bg-ink hover:text-white"
+            className="rounded-full border border-ink/30 px-5 py-3 font-medium hover:bg-ink hover:text-white"
           >
             ต่ออายุ MA Cisco
           </Link>
@@ -105,7 +105,7 @@ export default function NetworkServicePage() {
             height={700}
             sizes="(min-width: 1024px) 1100px, 100vw"
             priority
-            className="mb-14 w-full rounded-lg border border-rule bg-panel"
+            className="mb-14 w-full rounded-[22px] bg-tile"
           />
         )}
         <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
@@ -127,7 +127,7 @@ export default function NetworkServicePage() {
         <section className="mt-16">
           <h2 className="text-[1.5rem] font-semibold">อุปกรณ์ที่จำหน่ายและติดตั้ง</h2>
           {hasPublicFile(brandsImage) && (
-            <SiteImage src={brandsImage} alt="อุปกรณ์ Server, Network, Wireless ที่ GO Along จำหน่าย" width={1500} height={1000} sizes="(min-width: 1024px) 1100px, 100vw" className="mt-6 w-full rounded-lg border border-rule bg-panel" />
+            <SiteImage src={brandsImage} alt="อุปกรณ์ Server, Network, Wireless ที่ GO Along จำหน่าย" width={1500} height={1000} sizes="(min-width: 1024px) 1100px, 100vw" className="mt-6 w-full rounded-[22px] bg-tile" />
           )}
           <dl className="mt-4 divide-y divide-rule border-y border-rule">
             {brands.map((b) => (
