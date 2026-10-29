@@ -97,16 +97,12 @@ export default function NetworkServicePage() {
       </PageHeader>
 
       <Container className="py-14">
+        <div className="mb-14 grid gap-4 md:grid-cols-2">
+          <SiteImage src="/images/network/it-service.webp" alt="IT Service: IT support, network services และ preventive maintenance" width={1500} height={1000} sizes="(min-width: 768px) 500px, 100vw" priority className="w-full rounded-[22px] bg-tile" />
+          <SiteImage src="/images/network/network-security.webp" alt="ระบบรักษาความปลอดภัยระบบเครือข่าย (Network Security)" width={1500} height={1000} sizes="(min-width: 768px) 500px, 100vw" priority className="w-full rounded-[22px] bg-tile" />
+        </div>
         {hasPublicFile(heroImage) && (
-          <SiteImage
-            src={heroImage}
-            alt="บริการ Network และ IT Support โดย GO Along"
-            width={1500}
-            height={700}
-            sizes="(min-width: 1024px) 1100px, 100vw"
-            priority
-            className="mb-14 w-full rounded-[22px] bg-tile"
-          />
+          <SiteImage src={heroImage} alt="บริการ Network และ IT Support โดย GO Along" width={1500} height={700} sizes="(min-width: 1024px) 1100px, 100vw" className="mb-14 w-full rounded-[22px] bg-tile" />
         )}
         <div className="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {groups.map((g) => (

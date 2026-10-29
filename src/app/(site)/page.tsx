@@ -136,6 +136,7 @@ export default async function Home() {
         <div className="mx-auto max-w-[1200px] px-3 pb-3">
           <div className="rounded-[28px] bg-board px-6 py-16 text-white sm:py-20">
             <h2 data-reveal className="display display-md text-center">จากคุยครั้งแรก ถึงดูแลหลังส่งมอบ</h2>
+            <SiteImage src="/images/process.webp" alt="5 ขั้นตอนการทำงานของ GO Along: ปรึกษา วิเคราะห์ ออกแบบและพัฒนา ทดสอบ ส่งมอบและดูแล" width={1600} height={1200} sizes="(min-width: 1024px) 900px, 100vw" className="mx-auto mt-10 w-full max-w-4xl rounded-[22px]" />
             <ol className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-5">
               {workflowSteps.map((step, i) => (
                 <li key={step.title} data-reveal className="border-t border-white/15 pt-4">

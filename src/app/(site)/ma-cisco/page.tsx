@@ -44,7 +44,7 @@ export default function MaCiscoPage() {
         title="ต่ออายุ MA Cisco และ Smart Net Total Care"
         lead="GO Along เป็น Cisco Partner ต่อ MA ให้อุปกรณ์ Cisco ทุกรุ่นที่ยังไม่ EOS ได้โดยตรง"
       >
-        <SiteImage src="/images/network/ma-cisco.svg" alt="ต่ออายุ MA Cisco SmartNet โดย GO Along" width={1500} height={700} sizes="(min-width: 1024px) 760px, 100vw" priority className="mx-auto mt-8 w-full max-w-3xl rounded-[22px] bg-tile" />
+        <SiteImage src="/images/network/ma-cisco.webp" alt="ต่ออายุ MA Cisco SmartNet โดย GO Along" width={1500} height={1000} sizes="(min-width: 1024px) 760px, 100vw" priority className="mx-auto mt-8 w-full max-w-3xl rounded-[22px] bg-tile" />
       </PageHeader>
       <Container className="grid gap-14 py-14 lg:grid-cols-[1.4fr_1fr]">
         <div>
