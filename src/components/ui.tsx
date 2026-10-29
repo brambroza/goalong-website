@@ -135,9 +135,9 @@ export function ContactBand({
   note?: string;
 }) {
   return (
-    <section className="mt-20 bg-paper">
+    <section className="mt-20 pb-3">
       <div className="mx-auto max-w-[1200px] px-3">
-        <div className="rounded-[28px] bg-board px-6 py-16 text-center text-white sm:py-24">
+        <div className="rounded-[28px] border border-white/10 bg-[#0e1114] px-6 py-16 text-center text-white sm:py-24">
           <h2 className="display display-md mx-auto max-w-3xl">{title}</h2>
           <p className="subhead mx-auto mt-4 max-w-xl text-white/60">{note}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">

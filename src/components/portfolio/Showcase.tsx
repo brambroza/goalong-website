@@ -59,8 +59,8 @@ export function Showcase() {
           gsap.fromTo(screens[i], { autoAlpha: 0, yPercent: 6 }, { autoAlpha: 1, yPercent: 0, duration: 0.5, ease: "power3.out", delay: 0.15 });
           gsap.to(items, { autoAlpha: 0.3, duration: 0.3 });
           gsap.to(items[i], { autoAlpha: 1, duration: 0.3 });
-          q(".sc-dot").forEach((d, di) => d.classList.toggle("bg-andon", di === i));
-          q(".sc-dot").forEach((d, di) => d.classList.toggle("bg-rule", di !== i));
+          q(".sc-dot").forEach((d, di) => d.classList.toggle("bg-brand", di === i));
+          q(".sc-dot").forEach((d, di) => d.classList.toggle("bg-white/20", di !== i));
           current = play(screens[i].dataset.id!);
         };
 
@@ -99,11 +99,11 @@ export function Showcase() {
   );
 
   return (
-    <section ref={root} id="portfolio" className="bg-tile">
+    <section ref={root} id="portfolio" className="border-t border-white/10">
       <div className="mx-auto max-w-[1024px] px-4 py-16 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="display display-md">ระบบที่เราสร้าง และใช้งานจริง</h2>
-          <p className="subhead mt-3 text-steel">
+          <p className="subhead mt-3 text-white/60">
             ตั้งแต่ AI agent บน LINE ไปจนถึง ERP เต็มระบบ ทุกตัวออกแบบสำหรับธุรกิจไทย
             และดูแลต่อโดยทีมเดียวกับที่พัฒนา
           </p>
@@ -112,7 +112,7 @@ export function Showcase() {
         {/* Desktop: pinned screen + scrolling list. Mobile: stacked. */}
         <div className="mt-12 lg:grid lg:grid-cols-[1.25fr_1fr] lg:gap-12">
           <div className="sc-pin hidden lg:block">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[22px] bg-board shadow-[0_30px_60px_-24px_rgba(0,0,0,0.45)]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[22px] bg-board ring-1 ring-white/10 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.8)]">
               {portfolio.map((p) => (
                 <div key={p.id} data-id={p.id} className="sc-screen absolute inset-0">
                   {p.image ? (
@@ -125,7 +125,7 @@ export function Showcase() {
             </div>
             <div className="mt-4 flex justify-center gap-2" aria-hidden="true">
               {portfolio.map((p, i) => (
-                <span key={p.id} className={`sc-dot size-2 rounded-full ${i === 0 ? "bg-andon" : "bg-rule"}`} />
+                <span key={p.id} className={`sc-dot size-2 rounded-full ${i === 0 ? "bg-brand" : "bg-white/20"}`} />
               ))}
             </div>
           </div>
@@ -143,26 +143,26 @@ export function Showcase() {
                     )}
                   </div>
                 </div>
-                <p className="text-[0.85rem] tabular-nums text-steel">
+                <p className="font-mono text-[0.78rem] tabular-nums text-white/50">
                   {String(i + 1).padStart(2, "0")} / {String(portfolio.length).padStart(2, "0")} · {p.kind}
                 </p>
                 <h3 className="mt-2 text-[1.5rem] font-semibold">{p.name}</h3>
-                <p className="mt-1 text-andon-deep">{p.tagline}</p>
-                <p className="mt-3 text-[0.97rem] leading-7 text-steel">{p.summary}</p>
+                <p className="mt-1 text-brand">{p.tagline}</p>
+                <p className="mt-3 text-[0.97rem] leading-7 text-white/65">{p.summary}</p>
                 <ul className="mt-4 space-y-1.5 text-[0.95rem]">
                   {p.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
-                      <span aria-hidden="true" className="mt-[0.65rem] size-1.5 shrink-0 rounded-full bg-andon" />
+                      <span aria-hidden="true" className="mt-[0.65rem] size-1.5 shrink-0 rounded-full bg-brand" />
                       {b}
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-[0.9rem] text-steel">เหมาะกับ: {p.audience}</p>
+                <p className="mt-2 text-[0.9rem] text-white/50">เหมาะกับ: {p.audience}</p>
                 <a
                   href={p.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="link-more mt-4"
+                  className="link-more mt-4 text-brand"
                 >
                   เปิดดู {p.name}
                 </a>

@@ -83,22 +83,22 @@ export function DataFlow() {
   );
 
   return (
-    <section id="dataflow" ref={root} className="bg-paper">
+    <section id="dataflow" ref={root} className="border-t border-white/10">
       <div className="mx-auto grid lg:min-h-[calc(100vh-68px)] max-w-[1024px] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:py-0">
         <div>
           <h2 className="display display-md">ข้อมูลเข้าครั้งเดียว ไหลถึงทุกคนที่ต้องใช้</h2>
           <ol className="mt-8 space-y-6">
             {steps.map((s, i) => (
-              <li key={s.title} data-i={i} className="df-step border-l-2 border-andon pl-4">
+              <li key={s.title} data-i={i} className="df-step border-l-2 border-brand pl-4">
                 <h3 className="font-semibold">{s.title}</h3>
-                <p className="mt-1 text-[0.97rem] leading-7 text-steel">{s.body}</p>
+                <p className="mt-1 text-[0.97rem] leading-7 text-white/60">{s.body}</p>
               </li>
             ))}
           </ol>
         </div>
 
         <svg viewBox="0 0 520 580" className="mx-auto w-full max-w-[460px]" aria-hidden="true">
-          <path d={PATH} fill="none" stroke="#d8ddd8" strokeWidth="2" strokeDasharray="4 6" />
+          <path d={PATH} fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="2" strokeDasharray="4 6" />
           <path
             className="df-path"
             d={PATH}
@@ -111,9 +111,9 @@ export function DataFlow() {
           />
           {STOPS.map((s, i) => (
             <g key={i} data-i={i} className="df-stop" style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}>
-              <circle cx={s.x} cy={s.y} r="26" fill="#e3f1e9" />
-              <circle cx={s.x} cy={s.y} r="26" fill="none" stroke="#1d7f54" strokeWidth="2" />
-              <text x={s.x} y={s.y + 4} textAnchor="middle" fontSize="11" fontWeight="600" fill="#13583a">
+              <circle cx={s.x} cy={s.y} r="26" fill="#0e1114" />
+              <circle cx={s.x} cy={s.y} r="26" fill="none" stroke="#40bd5f" strokeWidth="2" />
+              <text x={s.x} y={s.y + 4} textAnchor="middle" fontSize="11" fontWeight="600" fill="#ffffff">
                 {s.label}
               </text>
             </g>

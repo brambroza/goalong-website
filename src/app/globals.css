@@ -88,6 +88,20 @@ body {
   text-underline-offset: 3px;
 }
 
+/* Blueprint grid behind dark sections */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 100%);
+}
+
+/* FAQ on a dark surface */
+.faq-dark .divide-rule > * + * { border-color: rgba(255, 255, 255, 0.12); }
+.faq-dark .border-rule { border-color: rgba(255, 255, 255, 0.12); }
+.faq-dark .text-steel { color: rgba(255, 255, 255, 0.6); }
+
 /* Long-form article / markdown body */
 .prose-ga h2 {
   font-size: 1.6rem;
